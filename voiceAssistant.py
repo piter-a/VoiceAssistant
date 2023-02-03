@@ -58,9 +58,19 @@ def takeCommand():
 
     return query
 
-# search google for user query
+# search google for user query --> search google for + x
 def googleSearch(query):
     kt.search(query)
+
+# play on youtube --> youtube play + vid name
+def playOnYt(query):
+    kt.playonyt(query)
+
+# command for playing spotify --> spotify play + song name
+def playSpotify(query):
+    result = spotify.search(q = song_name, type = 'track')
+    uri = result['tracks']['items'][0]['uri']
+    spotify.start_playback(device_id = deviceID, context_uri = uri)
 
 
 # query = takeCommand().lower()
@@ -104,9 +114,6 @@ def startRankedMidJgl():
     pyautogui.leftClick(1011, 842)
     pyautogui.leftClick(983, 773)
 
-    pyautogui.displayMousePosition()
-
-
     time.sleep(1)
 
     # find match btn
@@ -125,7 +132,7 @@ def startRankedMidJgl():
 # make a function to select primary/secondary roles using voice commands
 # select game mode using voice commands
 
-# play songs from yt
-
 # check if league is already running, if running open league window
 # else start league
+
+
