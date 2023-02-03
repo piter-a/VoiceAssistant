@@ -5,10 +5,8 @@ import pywhatkit as kt
 import spotipy as sp
 import credentials
 import pyautogui
-import cv2
 import time
 from spotipy.oauth2 import SpotifyOAuth
-from pywinauto import Application
 
 
 engine = pyttsx3.init('sapi5')
@@ -129,5 +127,5 @@ def startRankedMidJgl():
 
 # play songs from yt
 
-
-
+# check if league is already running, if running open league window
+# else start league
