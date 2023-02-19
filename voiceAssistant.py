@@ -10,8 +10,7 @@ import pygetwindow as gw
 import subprocess
 import time
 from spotipy.oauth2 import SpotifyOAuth
-
-    
+   
 r = sr.Recognizer()
 
 engine = pyttsx3.init('sapi5')
@@ -39,11 +38,13 @@ for i in range(len(devices['devices'])):
         deviceID = devices['devices'][i]['id']
         break
 
+# ?????? 
 # play song on spotify --> make function to do that using a voice command
 # song_name = 'arachnophobia'
 # result = spotify.search(q = song_name, type = 'track')
 # uri = result['tracks']['items'][0]['uri']
 # spotify.start_playback(device_id = deviceID, context_uri = uri)
+# ?????? 
 
 # take audio input
 def speak(audio):
@@ -52,7 +53,6 @@ def speak(audio):
 
 # listen for user query
 def takeCommand():
-
     with sr.Microphone(device_index = 0) as source:
         audio = r.listen(source)
 
@@ -62,40 +62,29 @@ def takeCommand():
 
 # search google for user query --> search google for + x
 def googleSearch(query):
-    # googlesearch = query.split(' ')
-    # googlesearch = ' '.join(googlesearch[3:])
+    googlesearch = query.split()
+    googlesearch = ' '.join(googlesearch[3:])
     kt.search(query)
 
 # play on youtube --> youtube play + vid name
 def playOnYt(query):
+    ytsearch = query.split()
+    ytsearch = ' '.join(ytsearch[2:])
     kt.playonyt(query)
 
 # command for playing spotify --> spotify play + song name
-# def playSpotify(query):
-    # command = query.split()
-    # song_name = ' '.join(command[2:])
-    # result = spotify.search(q = song_name, type = 'track')
-    # uri = result['tracks']['items'][0]['uri']
-    # spotify.start_playback(device_id = deviceID, context_uri = uri)
+def playSpotify(query):
+    command = query.split()
+    song_name = ' '.join(command[2:])
+    result = spotify.search(q = song_name, type = 'track')
+    uri = result['tracks']['items'][0]['uri']
+    spotify.start_playback(device_id = deviceID, context_uri = uri)
 
-
-# query = takeCommand().lower()
-
-# if 'League of Legends' in query:
-#     engine.say('Opening league of legends')
-#     engine.runAndWait()
-#     os.startfile(r"D:\Riot Games\League of Legends\LeagueClient.exe")
-
-# automating mouse clicks using pyautogui
-# to select role + start game in league of legends
-
-# os.startfile(r"D:\Riot Games\League of Legends\LeagueClient.exe")
-
-# make a function to select primary/secondary roles using voice commands
-# select game mode using voice commands
+# make a function to select primary/secondary roles using voice commands (DONE)
+# select game mode using voice commands (DONE)
 
 # check if league is already running, if running open league window
-# else start league
+# else start league (DONE)
 # query = takeCommand()
 
 # playOnYt(ytsearch)
